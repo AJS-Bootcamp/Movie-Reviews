@@ -4,7 +4,8 @@
   "description": "movie reviews",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+  "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/AJS-Bootcamp/Movie-Reviews/issues"
   },
-  "homepage": "https://github.com/AJS-Bootcamp/Movie-Reviews#readme"
+  "homepage": "https://github.com/AJS-Bootcamp/Movie-Reviews#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
 }
