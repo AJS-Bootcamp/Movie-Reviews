@@ -4,6 +4,8 @@ const morgan = require('morgan');
 const apiRouter = require('./routes/api');
 const userRouter = require('./routes/userRouter');
 
+const movieRouter = require('./routes/movieRouter');
+
 const hostname = 'localhost';
 const PORT = process.env.PORT || 3001;
 
@@ -20,3 +22,5 @@ app.use('/users', userRouter);
 app.listen(PORT, hostname, () => {
   console.log(`Server running at http://${hostname}:${PORT}/`);
 });
+
+app.use('/api/movies', movieRouter);
