@@ -29,7 +29,7 @@ router.get('/', async (req, res) => {
 //Api movies Trending
 const TRENDING_API_URL = `https://api.themoviedb.org/3/trending/movie/week?api_key=${APIKEY}`;
 
-router.get('/', async (req, res, next) => {
+router.get('/trending', async (req, res, next) => {
   try {
     const response = await fetch(TRENDING_API_URL);
     const data = await response.json();
@@ -42,11 +42,12 @@ router.get('/', async (req, res, next) => {
 //End of movies Trending
 
 //Action Movies Section
-const ACTION_API_URL = `https://api.themoviedb.org/3/action/movie/week?api_key=${APIKEY}`;
+const API_URL = `https://api.themoviedb.org/3/discover/movie?api_key=${APIKEY}`;
 
-router.get('/', async (req, res, next) => {
+
+router.get('/action', async (req, res, next) => {
   try {
-    const response = await fetch(ACTION_API_URL);
+    const response = await fetch(`${API_URL}?api_key=${APIKEY}&with_genres=28`);
     const data = await response.json();
     res.json(data.results);
   } catch (error) {
@@ -60,7 +61,7 @@ router.get('/', async (req, res, next) => {
 //Comedy Movies Section
 const COMEDY_API_URL = `https://api.themoviedb.org/3/comedy/movie/week?api_key=${APIKEY}`;
 
-router.get('/', async (req, res, next) => {
+router.get('/comedy', async (req, res, next) => {
   try {
     const response = await fetch(COMEDY_API_URL);
     const data = await response.json();
@@ -75,7 +76,7 @@ router.get('/', async (req, res, next) => {
 //Family Movies Section
 const FAMILY_API_URL = `https://api.themoviedb.org/3/family/movie/week?api_key=${APIKEY}`;
 
-router.get('/', async (req, res, next) => {
+router.get('/family', async (req, res, next) => {
   try {
     const response = await fetch(FAMILY_API_URL);
     const data = await response.json();
