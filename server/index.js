@@ -38,3 +38,15 @@ mongoose
   .catch((error) => {
     console.log(error);
   });
+
+
+//api movies
+
+
+app.use('/api', apiRouter);
+
+const port = process.env.PORT || 3000; // use the PORT environment variable, or 3000 if it's not set
+
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
+});
