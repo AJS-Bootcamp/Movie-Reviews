@@ -42,12 +42,11 @@ router.get('/trending', async (req, res, next) => {
 //End of movies Trending
 
 //Action Movies Section
-const API_URL = `https://api.themoviedb.org/3/discover/movie?api_key=${APIKEY}`;
-
+const ACTION_API_URL = `https://api.themoviedb.org/3/discover/movie?api_key=${APIKEY}&with_genres=28`;
 
 router.get('/action', async (req, res, next) => {
   try {
-    const response = await fetch(`${API_URL}?api_key=${APIKEY}&with_genres=28`);
+    const response = await fetch(ACTION_API_URL);
     const data = await response.json();
     res.json(data.results);
   } catch (error) {
@@ -59,7 +58,7 @@ router.get('/action', async (req, res, next) => {
 //End of movies Action
 
 //Comedy Movies Section
-const COMEDY_API_URL = `https://api.themoviedb.org/3/comedy/movie/week?api_key=${APIKEY}`;
+const COMEDY_API_URL =`https://api.themoviedb.org/3/discover/movie?api_key=${APIKEY}&with_genres=35`;
 
 router.get('/comedy', async (req, res, next) => {
   try {
@@ -74,7 +73,7 @@ router.get('/comedy', async (req, res, next) => {
 //End of movies Comedy
 
 //Family Movies Section
-const FAMILY_API_URL = `https://api.themoviedb.org/3/family/movie/week?api_key=${APIKEY}`;
+const FAMILY_API_URL =`https://api.themoviedb.org/3/discover/movie?api_key=${APIKEY}&with_genres=10751`;
 
 router.get('/family', async (req, res, next) => {
   try {
@@ -89,9 +88,9 @@ router.get('/family', async (req, res, next) => {
 //End of movies Family
 
 //Horror Movies Section
-const HORROR_API_URL = `https://api.themoviedb.org/3/horror/movie/week?api_key=${APIKEY}`;
+const HORROR_API_URL =`https://api.themoviedb.org/3/discover/movie?api_key=${APIKEY}&with_genres=27`;
 
-router.get('/', async (req, res, next) => {
+router.get('/horror', async (req, res, next) => {
   try {
     const response = await fetch(HORROR_API_URL);
     const data = await response.json();
@@ -104,9 +103,9 @@ router.get('/', async (req, res, next) => {
 //End of movies Horror
 
 //Drama Movies Section
-const DRAMA_API_URL = `https://api.themoviedb.org/3/drama/movie/week?api_key=${APIKEY}`;
+const DRAMA_API_URL = `https://api.themoviedb.org/3/discover/movie?api_key=${APIKEY}&with_genres=18`;
 
-router.get('/', async (req, res, next) => {
+router.get('/drama', async (req, res, next) => {
   try {
     const response = await fetch(DRAMA_API_URL);
     const data = await response.json();
@@ -119,9 +118,9 @@ router.get('/', async (req, res, next) => {
 //End of movies Drama
 
 //Romance Movies Section
-const ROMANCE_API_URL = `https://api.themoviedb.org/3/romance/movie/week?api_key=${APIKEY}`;
+const ROMANCE_API_URL = `https://api.themoviedb.org/3/discover/movie?api_key=${APIKEY}&with_genres=10749`;
 
-router.get('/', async (req, res, next) => {
+router.get('/romance', async (req, res, next) => {
   try {
     const response = await fetch(ROMANCE_API_URL);
     const data = await response.json();
