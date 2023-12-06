@@ -41,4 +41,30 @@ router.get('/', (req, res) => {
   res.json(movies);
 });
 
+
+//api movies
+// const fetch = require('node-fetch');
+let fetch;
+
+import('node-fetch').then(nodeFetch => {
+  fetch = nodeFetch;
+});
+
+const APIKEY = process.env.OPEN_MOVIE_API_KEY;
+const TRENDING_API_URL = `https://api.themoviedb.org/3/trending/movie/week?api_key=${APIKEY}`;
+
+//Api movies
+router.get('/trending', async (req, res, next) => {
+  try {
+    const response = await fetch(TRENDING_API_URL);
+    const data = await response.json();
+    res.json(data.results);
+  } catch (error) {
+    console.error("Error fetching trending movies:", error);
+    res.status(500).json({ error: 'An error occurred while fetching trending movies' });
+  }
+});
+
+
+
 module.exports = router;
