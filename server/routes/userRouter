@@ -1,125 +1,38 @@
 const express = require('express');
-// const User = require("")
+const User = require('../models/user');
 
 const userRouter = express.Router();
 
-userRouter
-  .route('/')
-  .get((req, res, next) => {
-    res.statusCode = 403;
-    res.send('You do not have access to view all of the users');
-  })
-  .post((req, res, next) => {
-    res.statusCode = 200;
-    res.send('Add a user to this data here.');
-  })
-  .put((req, res, next) => {
-    res.statusCode = 403;
-    res.send('Access Denied!');
-  })
-  .delete((req, res, next) => {
-    res.statusCode = 403;
-    res.send('Access Denied!');
-  });
+userRouter.route('/').get((req, res, next) => {
+  User.find()
+    .then((users) => {
+      res.statusCode = 200;
+      res.setHeader('Content-Type', 'application/json');
+      res.json(users);
+    })
+    .catch((err) => next(err));
+});
 
-// Specific User
-userRouter
-  .route('/:userId')
-  .get((req, res, next) => {
-    res.statusCode = 200;
-    res.send('Here is the user.');
-  })
-  .post((req, res, next) => {
-    res.statusCode = 200;
-    res.send('Edit user info here');
-  })
-  .put((req, res, next) => {
-    res.statusCode = 200;
-    res.send('Modify user info');
-  })
-  .delete((req, res, next) => {
-    res.statusCode = 200;
-    res.send('Delete User');
+userRouter.post('/register', (req, res) => {
+  User.findOne({ username: req.body.username }).then((user) => {
+    if (user) {
+      return res.status(400).json({
+        username: 'A user has already registered with this username!',
+      });
+    } else {
+      const newUser = new User({
+        username: req.body.username,
+        firstname: req.body.firstname,
+        lastname: req.body.lastname,
+        email: req.body.email,
+        dob: req.body.dob,
+      });
+      newUser.save();
+      return res.status(200).json({ msg: newUser });
+    }
   });
+});
 
-// Favorites
-userRouter
-  .route('/:userId/favorites')
-  .get((req, res, next) => {
-    res.statusCode = 200;
-    res.send('Here are your favorites.');
-  })
-  .post((req, res, next) => {
-    res.statusCode = 200;
-    res.send('Add a favorite to this data here.');
-  });
-//   .put((req, res, next) => {
-//     res.statusCode = 403;
-//     res.send('Access Denied!');
-//   })
-//   .delete((req, res, next) => {
-//     res.statusCode = 403;
-//     res.send('Access Denied');
-//   });
-
-// Specific Favorite
-userRouter
-  .route('/:userId/favorites/:favoriteId')
-  .get((req, res, next) => {
-    res.statusCode = 200;
-    res.send('Here is your favorite.');
-  })
-  //   .post((req, res, next) => {
-  //     res.statusCode = 403;
-  //     res.send('Access Denied');
-  //   })
-  //   .put((req, res, next) => {
-  //     res.statusCode = 403;
-  //     res.send('Access Denied!');
-  //   })
-  .delete((req, res, next) => {
-    res.statusCode = 200;
-    res.send('Remove Favorite');
-  });
-
-// Watch List
-userRouter
-  .route('/:userId/watchList')
-  .get((req, res, next) => {
-    res.statusCode = 200;
-    res.send('Here are the movies in the watch list.');
-  })
-  .post((req, res, next) => {
-    res.statusCode = 200;
-    res.send('Add a movie to this watch list.');
-  })
-  .put((req, res, next) => {
-    res.statusCode = 403;
-    res.send('Access Denied!');
-  })
-  .delete((req, res, next) => {
-    res.statusCode = 403;
-    res.send('Access Denied!');
-  });
-
-// Specific Watch List Item
-userRouter
-  .route('/:userId/watchList/:watchListId')
-  .get((req, res, next) => {
-    res.statusCode = 200;
-    res.send('Here is a single watch list movie.');
-  })
-  //   .post((req, res, next) => {
-  //     res.statusCode = 403;
-  //     res.send('You do not have access');
-  //   })
-  //   .put((req, res, next) => {
-  //     res.statusCode = 403;
-  //     res.send('Access Denied!');
-  //   })
-  .delete((req, res, next) => {
-    res.statusCode = 200;
-    res.send('You removed a movie from your watch list.');
-  });
+userRouter.post('/login');
 
 module.exports = userRouter;
