@@ -3,6 +3,8 @@ require('dotenv').config({ path: '.env' });
 const express = require('express');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
+const passport = require('passport');
+const config = require('./config');
 
 const apiRouter = require('./routes/api');
 const userRouter = require('./routes/userRouter');
@@ -18,9 +20,15 @@ app.use(express.json());
 
 app.use(express.static(__dirname + '/client'));
 
+app.use(passport.initialize());
+
+
 app.use('/', apiRouter);
 app.use('/users', userRouter);
 
+app.use('/api', apiRouter);
+
+//api movies
 app.use('/api/movies', movieRouter);
 
 mongoose
@@ -38,12 +46,6 @@ mongoose
   .catch((error) => {
     console.log(error);
   });
-
-
-//api movies
-
-
-app.use('/api', apiRouter);
 
 const port = process.env.PORT || 3000; // use the PORT environment variable, or 3000 if it's not set
 
