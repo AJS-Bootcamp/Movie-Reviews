@@ -4,7 +4,6 @@ const express = require('express');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 const passport = require('passport');
-const config = require('./config');
 
 const apiRouter = require('./routes/api');
 const userRouter = require('./routes/userRouter');
