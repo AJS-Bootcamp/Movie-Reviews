@@ -50,7 +50,7 @@ userRouter.post('/login', passport.authenticate('local'), (req, res) => {
 
 
 //check if the user is already logged in
-router.post('/logout', (req, res, next) => {
+userRouter.post('/logout', (req, res, next) => {
   if (req.session) {
       req.session.destroy();
       res.setHeader('session-id');
