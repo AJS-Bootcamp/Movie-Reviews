@@ -135,4 +135,74 @@ userRouter
       .catch((err) => next(err));
   });
 
+//watchlist
+userRouter
+  .route('/:userId/watchList')
+  .options((req, res) => res.sendStatus(200))
+  .get((req, res, next) => {
+    User.findById(req.params.userId)
+      .then((user) => {
+        if (user) {
+          res.statusCode = 200;
+          res.setHeader('Content-Type', 'application/json');
+          res.json(user.watchList);
+        } else {
+          err = new Error('User not found');
+          err.status = 404;
+          return next(err);
+        }
+      })
+      .catch((err) => next(err));
+  })
+  .post(authenticate.verifyUser, (req, res, next) => {
+    User.findById(req.params.userId)
+      .then((user) => {
+        if (user) {
+          // TODO check if movie id exist in the body
+          user.watchList.push(req.body);
+
+          user
+            .save()
+            .then((user) => {
+              res.statusCode = 200;
+              res.setHeader('Content-Type', 'application/json');
+              res.json(user);
+            })
+            .catch((err) => next(err));
+        } else {
+          err = new Error('User not found');
+          err.status = 404;
+          return next(err);
+        }
+      })
+      .catch((err) => next(err));
+  });
+
+userRouter
+  .route('/:userId/watchList/:movieId')
+  .options((req, res) => res.sendStatus(200))
+  .delete((req, res, next) => {
+    User.findById(req.params.userId)
+      .then((user) => {
+        if (user) {
+          user.watchList = user.watchList.filter(
+            (movie) => movie.movieId !== req.params.movieId
+          );
+          user
+            .save()
+            .then((user) => {
+              res.statusCode = 200;
+              res.setHeader('Content-Type', 'application/json');
+              res.json(user.watchList);
+            })
+            .catch((err) => next(err));
+        } else {
+          err = new Error('User not found');
+          err.status = 404;
+          return next(err);
+        }
+      })
+      .catch((err) => next(err));
+  });
+
 module.exports = userRouter;
