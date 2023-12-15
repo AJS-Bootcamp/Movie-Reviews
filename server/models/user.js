@@ -7,7 +7,7 @@ const movieRefSchema = new Schema({
     type: String,
     required: true,
   },
-  name:{
+  title:{
     type:String,
     required:true
   },
