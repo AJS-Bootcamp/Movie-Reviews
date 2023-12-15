@@ -48,7 +48,6 @@ userRouter.post('/login', passport.authenticate('local'), (req, res) => {
   res.json({ success: true, token, status: 'You are successfully logged in!' });
 });
 
-
 //check if the user is already logged in
 userRouter.post('/logout', (req, res, next) => {
   if (req.session) {
