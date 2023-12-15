@@ -2,6 +2,17 @@ const mongoose = require('mongoose');
 const passportLocalMongoose = require('passport-local-mongoose');
 const Schema = mongoose.Schema;
 
+const movieRefSchema = new Schema({
+  movieId: {
+    type: String,
+    required: true,
+  },
+  name:{
+    type:String,
+    required:true
+  },
+});
+
 const userSchema = new Schema(
   {
     firstname: {
@@ -20,6 +31,8 @@ const userSchema = new Schema(
       type: Date,
       required: true,
     },
+    watchList:[movieRefSchema],
+    favorites:[movieRefSchema]
   },
   {
     timestamps: true,
