@@ -48,18 +48,23 @@ userRouter.post('/login', passport.authenticate('local'), (req, res) => {
   res.json({ success: true, token, status: 'You are successfully logged in!' });
 });
 
-userRouter.get('/logout', (req, res, next) => {
+
+//check if the user is already logged in
+router.post('/logout', (req, res, next) => {
   if (req.session) {
-    req.session.destroy();
-    res.clearCookie('session-id');
-    res.redirect('/');
+      req.session.destroy();
+      res.setHeader('session-id');
+      // res.redirect('/');
+      // console.log('You are logged out!');
+      res.statusCode = 200;
+      res.setHeader('Content-Type', 'application/json');
+      res.json({success: true, status: 'You are logged out!'});
   } else {
-    const err = new Error('You are not logged in!');
-    err.status = 401;
-    return next(err);
+      const err = new Error('You are not logged in!');
+      err.status = 401;
+      return next(err);
   }
 });
-
 userRouter.get('/delete');
 
 module.exports = userRouter;
