@@ -1,23 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Homepage from '../src/pages/HomePage';
+import Footer from '../src/components/Footer';
+import Header from '../src/components/Header';
+import '../src/App.css';
+import User from '../src/pages/User';
+import Watchlist from '../src/components/Watchlist';
+import Favorites from '../src/components/Favorites';
 
 function App() {
-  const [data, setData] = React.useState(null);
-
-  React.useEffect(() => {
-    fetch('/api')
-      .then((res) => res.json())
-      .then((data) => setData(data.message));
-  }, []);
-
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>{!data ? 'Loading...' : data}</p>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Homepage />} />
+        <Route path="/User/:userId" element={<User />} />
+        <Route path="/User/:userId/favorites" element={<Favorites />} />
+        <Route path="/User/:userId/watchlist" element={<Watchlist />} />
+      </Routes>
+      <Footer />
+    </BrowserRouter>
   );
 }
 

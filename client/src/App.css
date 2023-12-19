@@ -1,38 +1,74 @@
-.App {
-  text-align: center;
+html {
+  background-image: linear-gradient(to bottom, #165aa9 0%, #11045b 100%);
+}
+.btn {
+  background-image: linear-gradient(to top, #30cfd0 0%, #330867 100%);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/*Header*/
+.header {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  max-width: 100vw;
 }
 
-.App-link {
-  color: #61dafb;
+.navbar-brand img {
+  width: 100%;
+  height: 100%;
+  margin-right: 2rem;
+  max-width: 4rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.navbar {
+  background-color: #09063d;
+  color: #faeded;
+}
+
+.navbar ul,
+.footer-links ul {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  padding: 0px 20px;
+}
+
+.navbar li,
+.footer-links li {
+  font-size: 20px;
+}
+
+/* Style the links on hover */
+.navbar a,
+.footer-links a {
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+
+  /* Darker text color */
+  transition: color 0.3s, text-decoration 0.3s;
+  /* Add smooth transitions JUST ADDED*/
+}
+
+/* Add blue color and underline on hover */
+.navbar a:hover,
+a:hover {
+  color: #48caeb;
+  /* Blue color */
+  text-decoration: underline;
+  background: linear-gradient(120deg, #5b0587, #ff0080, #ee3ce8);
+  /* background-size: 200% 200%; */
+  -webkit-background-clip: text;
+
+  font-size: 1.9rem;
+}
+
+/*Footer Social icon*/
+.social-icon {
+  margin-right: 10px;
+}
+
+.footer {
+  margin-bottom: 2rem;
+  min-height: 8rem;
 }

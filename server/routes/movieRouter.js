@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const fetch = require('node-fetch');
 
-
 //api movies
 const APIKEY = process.env.APIKEY;
 
@@ -11,7 +10,7 @@ const apiUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${APIKEY}`;
 
 router.get('/', async (req, res) => {
   try {
-      const response = await fetch(apiUrl);
+    const response = await fetch(apiUrl);
 
     if (!response.ok) {
       throw new Error('Network response was not ok');
@@ -35,8 +34,10 @@ router.get('/trending', async (req, res, next) => {
     const data = await response.json();
     res.json(data.results);
   } catch (error) {
-    console.error("Error fetching trending movies:", error);
-    res.status(500).json({ error: 'An error occurred while fetching trending movies' });
+    console.error('Error fetching trending movies:', error);
+    res
+      .status(500)
+      .json({ error: 'An error occurred while fetching trending movies' });
   }
 });
 //End of movies Trending
@@ -50,15 +51,17 @@ router.get('/action', async (req, res, next) => {
     const data = await response.json();
     res.json(data.results);
   } catch (error) {
-    console.error("Error fetching action movies:", error);
-    res.status(500).json({ error: 'An error occurred while fetching action movies' });
+    console.error('Error fetching action movies:', error);
+    res
+      .status(500)
+      .json({ error: 'An error occurred while fetching action movies' });
   }
 });
 
 //End of movies Action
 
 //Comedy Movies Section
-const COMEDY_API_URL =`https://api.themoviedb.org/3/discover/movie?api_key=${APIKEY}&with_genres=35`;
+const COMEDY_API_URL = `https://api.themoviedb.org/3/discover/movie?api_key=${APIKEY}&with_genres=35`;
 
 router.get('/comedy', async (req, res, next) => {
   try {
@@ -66,14 +69,16 @@ router.get('/comedy', async (req, res, next) => {
     const data = await response.json();
     res.json(data.results);
   } catch (error) {
-    console.error("Error fetching comedy movies:", error);
-    res.status(500).json({ error: 'An error occurred while fetching comedy movies' });
+    console.error('Error fetching comedy movies:', error);
+    res
+      .status(500)
+      .json({ error: 'An error occurred while fetching comedy movies' });
   }
 });
 //End of movies Comedy
 
 //Family Movies Section
-const FAMILY_API_URL =`https://api.themoviedb.org/3/discover/movie?api_key=${APIKEY}&with_genres=10751`;
+const FAMILY_API_URL = `https://api.themoviedb.org/3/discover/movie?api_key=${APIKEY}&with_genres=10751`;
 
 router.get('/family', async (req, res, next) => {
   try {
@@ -81,14 +86,16 @@ router.get('/family', async (req, res, next) => {
     const data = await response.json();
     res.json(data.results);
   } catch (error) {
-    console.error("Error fetching family movies:", error);
-    res.status(500).json({ error: 'An error occurred while fetching family movies' });
+    console.error('Error fetching family movies:', error);
+    res
+      .status(500)
+      .json({ error: 'An error occurred while fetching family movies' });
   }
 });
 //End of movies Family
 
 //Horror Movies Section
-const HORROR_API_URL =`https://api.themoviedb.org/3/discover/movie?api_key=${APIKEY}&with_genres=27`;
+const HORROR_API_URL = `https://api.themoviedb.org/3/discover/movie?api_key=${APIKEY}&with_genres=27`;
 
 router.get('/horror', async (req, res, next) => {
   try {
@@ -96,8 +103,10 @@ router.get('/horror', async (req, res, next) => {
     const data = await response.json();
     res.json(data.results);
   } catch (error) {
-    console.error("Error fetching horror movies:", error);
-    res.status(500).json({ error: 'An error occurred while fetching horror movies' });
+    console.error('Error fetching horror movies:', error);
+    res
+      .status(500)
+      .json({ error: 'An error occurred while fetching horror movies' });
   }
 });
 //End of movies Horror
@@ -111,8 +120,10 @@ router.get('/drama', async (req, res, next) => {
     const data = await response.json();
     res.json(data.results);
   } catch (error) {
-    console.error("Error fetching drama movies:", error);
-    res.status(500).json({ error: 'An error occurred while fetching drama movies' });
+    console.error('Error fetching drama movies:', error);
+    res
+      .status(500)
+      .json({ error: 'An error occurred while fetching drama movies' });
   }
 });
 //End of movies Drama
@@ -126,8 +137,10 @@ router.get('/romance', async (req, res, next) => {
     const data = await response.json();
     res.json(data.results);
   } catch (error) {
-    console.error("Error fetching romance movies:", error);
-    res.status(500).json({ error: 'An error occurred while fetching romance movies' });
+    console.error('Error fetching romance movies:', error);
+    res
+      .status(500)
+      .json({ error: 'An error occurred while fetching romance movies' });
   }
 });
 //End of movies Romance
@@ -188,12 +201,5 @@ router.get('/romance', async (req, res, next) => {
 // }
 
 // /*END OF SEARCH MOVIES SECTION*/
-
-
-
-
-
-
-
 
 module.exports = router;

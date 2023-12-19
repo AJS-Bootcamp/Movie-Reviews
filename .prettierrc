@@ -1,8 +1,8 @@
 {
-    "arrowParens": "always",
-    "bracketSpacing": true,
-    "printWidth": 80,
-    "semicolons": true,
-    "singleQuote": true,
-    "tabWidth": 2
-  }
+  "arrowParens": "always",
+  "bracketSpacing": true,
+  "printWidth": 80,
+  "semicolons": true,
+  "singleQuote": true,
+  "tabWidth": 2
+}
