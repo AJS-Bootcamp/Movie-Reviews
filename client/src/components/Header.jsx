@@ -17,36 +17,13 @@ function Header() {
 
   return (
     <div className="header">
-    <Navbar bg="dark" data-bs-theme="dark">
-    <Container>
-      <Navbar.Brand href="#home">Navbar</Navbar.Brand>
-      <NavbarBrand className="ms-5" href="/">
-          <img
-            src={LogoAJS}
-            alt="team logo"
-            className="float-start"
-            onClick={handleClick}
-          />
-          <h1 className="mt-1">Movies Review</h1>
+      <Navbar>
+        <NavbarBrand href="/">
+          <img src={LogoAJS} alt="team logo" onClick={handleClick} />
+          <h1>Movies Review</h1>
         </NavbarBrand>
-      <Nav className="me-auto">
-        <Nav.Link href="#home">Home</Nav.Link>
-        <Nav.Link href="#features">Features</Nav.Link>
-        <Nav.Link href="#pricing">Pricing</Nav.Link>
-      </Nav>
-    </Container>
-  </Navbar>
-
-   
-      <Navbar color="dark" dark sticky="top" expand="md">
-        
-        <Navigation className="nav-link" />
+        <Navigation />
       </Navbar>
-      <div
-        className={`text-center bg-info fs-5 ${
-          showText ? 'show-text' : 'hide-text'
-        }`}
-      ></div>
     </div>
   );
 }
