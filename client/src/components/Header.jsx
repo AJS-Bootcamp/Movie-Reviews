@@ -13,23 +13,13 @@ function Header() {
 
   return (
     <div className="header">
-      <Navbar color="dark" dark sticky="top" expand="md">
-        <NavbarBrand className="ms-5" href="/">
-          <img
-            src={LogoAJS}
-            alt="team logo"
-            className="float-start"
-            onClick={handleClick}
-          />
-          <h1 className="mt-1">Movies Review</h1>
+      <Navbar>
+        <NavbarBrand href="/">
+          <img src={LogoAJS} alt="team logo" onClick={handleClick} />
+          <h1>Movies Review</h1>
         </NavbarBrand>
-        <Navigation className="nav-link" />
+        <Navigation />
       </Navbar>
-      <div
-        className={`text-center bg-info fs-5 ${
-          showText ? 'show-text' : 'hide-text'
-        }`}
-      ></div>
     </div>
   );
 }
