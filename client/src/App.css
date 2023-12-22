@@ -1,6 +1,7 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 html {
@@ -89,6 +90,7 @@ a:hover {
   -webkit-background-clip: text;
 
   font-size: 1.9rem;
+  /* transform: scale(1.1,1.1); */
 }
 
 /* User */
