@@ -21,7 +21,7 @@ function Navigation() {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/Login" className="fs-4">
+            <NavLink to="/LoginPage" className="fs-4">
               Login
             </NavLink>
           </li>
