@@ -1,5 +1,5 @@
 import Navigation from './Navigation';
-import LogoAJS from '../app/assets/img/lightAJS.png';
+import LogoAJS from '../app/assets/img/MovieAJS.png';
 import { NavbarBrand } from 'reactstrap';
 import { useState } from 'react';
 
