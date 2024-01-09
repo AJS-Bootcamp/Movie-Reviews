@@ -21,9 +21,11 @@ function Navigation() {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/LoginPage" className="fs-4">
+            <div className="login">
+            <NavLink to="/LoginPage" className="fs-4" >
               Login
             </NavLink>
+            </div>
           </li>
         </ul>
       </nav>

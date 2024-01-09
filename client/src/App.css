@@ -14,6 +14,10 @@ html {
 }
 
 /*Header*/
+/*navigation*/
+div.login {
+  justify-content: flex-end;
+}
 
 nav div.container-fluid {
   display: flex;
