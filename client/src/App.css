@@ -93,6 +93,14 @@ a:hover {
   /* transform: scale(1.1,1.1); */
 }
 
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
 /* User */
 .user {
   background-color: white;
