@@ -12,6 +12,7 @@ function App() {
   return (
     <BrowserRouter>
       <Header />
+
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/User" element={<User />} />
@@ -19,6 +20,7 @@ function App() {
         <Route path="/User/:userId/favorites" element={<Favorites />} />
         <Route path="/User/:userId/watchlist" element={<Watchlist />} />
       </Routes>
+
       <Footer />
     </BrowserRouter>
   );
