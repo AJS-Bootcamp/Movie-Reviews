@@ -1,8 +1,9 @@
 import React from 'react';
 import logo from '../app/assets/img/MoviesAJS.png';
 import '../App.css';
+import NavigationGenre from '../components/NavigationGenre';
 
-function App() {
+function Homepage() {
   const [movies, setMovies] = React.useState(null);
 
   async function fetchData() {
@@ -19,12 +20,6 @@ function App() {
     }
   }
 
-  // React.useEffect(() => {
-  //   fetch('/api')
-  //     .then((res) => res.json())
-  //     .then((data) => setData(data.message));
-  // }, []);
-
   return (
     <div className="App">
       <div className="App-background-Logo">
@@ -32,8 +27,11 @@ function App() {
         <button onClick={() => fetchData()}>Find Your Movies</button>
         <p>{!movies ? 'Loading...' : movies}</p>
       </div>
+      <div style={{ display: 'flex', justifyContent: 'center' }}>
+        <NavigationGenre />
+      </div>
     </div>
   );
 }
 
-export default App;
+export default Homepage;
