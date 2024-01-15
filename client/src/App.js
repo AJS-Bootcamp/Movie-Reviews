@@ -7,6 +7,7 @@ import User from '../src/pages/User';
 import Watchlist from '../src/components/Watchlist';
 import Favorites from '../src/components/Favorites';
 import LoginPage from './pages/LoginPage';
+import TestPage from './pages/TestPage';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="LoginPage" element={<LoginPage />} />
         <Route path="/User/:userId/favorites" element={<Favorites />} />
         <Route path="/User/:userId/watchlist" element={<Watchlist />} />
+        <Route path="testpage" element={<TestPage />} />
       </Routes>
 
       <Footer />
