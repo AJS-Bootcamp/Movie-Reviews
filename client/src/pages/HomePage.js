@@ -1,11 +1,19 @@
-import React, { useState } from 'react';
-import logo from '../app/assets/img/lightAJS.png';
-import '../App.css';
 
-function App() {
-  const [movies, setMovies] = useState([]);
+import React, { useState } from 'react';
+
+
+
+import logo from '../app/assets/img/MoviesAJS.png';
+
+import '../App.css';
+import NavigationGenre from '../components/NavigationGenre';
+
+
+function Homepage() {
+  const [movies, setMovies] = React.useState(null);
   const [loading, setLoading] = useState(false);
   const IMG_PATH = 'https://image.tmdb.org/t/p/w1280';
+
 
   async function fetchData() {
     try {
@@ -24,19 +32,14 @@ function App() {
     }
   }
 
-  // React.useEffect(() => {
-  //   fetch('/api')
-  //     .then((res) => res.json())
-  //     .then((data) => setData(data.message));
-  // }, []);
-
   return (
     <div className="App">
-      <header className="App-header">
+      <div className="App-background-Logo">
         <img src={logo} className="App-logo" alt="logo" />
         <h2>Find Your Movies Here</h2>
         <button onClick={() => fetchData()}>Find Your Movies</button>
-      </header>
+
+      </div>
       <div>
         {loading
           ? 'Loading...'
@@ -54,9 +57,15 @@ function App() {
                 </div>
               );
             })}
+
+        <p>{!movies ? 'Loading...' : movies}</p>
+      </div>
+      <div style={{ display: 'flex', justifyContent: 'center' }}>
+        <NavigationGenre />
+
       </div>
     </div>
   );
 }
 
-export default App;
+export default Homepage;

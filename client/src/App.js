@@ -13,6 +13,7 @@ function App() {
   return (
     <BrowserRouter>
       <Header />
+
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/User" element={<User />} />
@@ -21,6 +22,7 @@ function App() {
         <Route path="/User/:userId/watchlist" element={<Watchlist />} />
         <Route path="testpage" element={<TestPage />} />
       </Routes>
+
       <Footer />
     </BrowserRouter>
   );

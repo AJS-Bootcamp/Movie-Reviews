@@ -16,14 +16,16 @@ function Navigation() {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/Search" className="fs-4">
+            <NavLink to="/SearchBox" className="fs-4">
               Search
             </NavLink>
           </li>
           <li>
-            <NavLink to="/LoginPage" className="fs-4">
-              Login
-            </NavLink>
+            <div className="login">
+              <NavLink to="/LoginPage" className="fs-4">
+                Login
+              </NavLink>
+            </div>
           </li>
         </ul>
       </nav>
