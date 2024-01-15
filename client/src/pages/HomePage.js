@@ -1,19 +1,14 @@
-
 import React, { useState } from 'react';
-
-
 
 import logo from '../app/assets/img/MoviesAJS.png';
 
 import '../App.css';
 import NavigationGenre from '../components/NavigationGenre';
 
-
 function Homepage() {
-  const [movies, setMovies] = React.useState(null);
+  const [movies, setMovies] = React.useState([]);
   const [loading, setLoading] = useState(false);
   const IMG_PATH = 'https://image.tmdb.org/t/p/w1280';
-
 
   async function fetchData() {
     try {
@@ -38,7 +33,6 @@ function Homepage() {
         <img src={logo} className="App-logo" alt="logo" />
         <h2>Find Your Movies Here</h2>
         <button onClick={() => fetchData()}>Find Your Movies</button>
-
       </div>
       <div>
         {loading
@@ -47,7 +41,7 @@ function Homepage() {
               const { poster_path, title, overview } = movie;
 
               return (
-                <div className='movie' key={index}>
+                <div className="movie" key={index}>
                   <img
                     src={`${IMG_PATH + poster_path}`}
                     alt={`${title} Poster`}
@@ -62,7 +56,6 @@ function Homepage() {
       </div>
       <div style={{ display: 'flex', justifyContent: 'center' }}>
         <NavigationGenre />
-
       </div>
     </div>
   );
