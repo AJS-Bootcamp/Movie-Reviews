@@ -4,7 +4,7 @@ import { SocialIcon } from 'react-social-icons';
 const Footer = () => {
   return (
     <div>
-      <footer className="bg-dark text-center text-white position-fixed bottom-0 w-100 ">
+      <footer className="bg-dark text-center text-white bottom-0 w-100 ">
         {/* <!-- Grid container --> */}
         <div className="container p-4 pb-0">
           {/* <!-- Section: Social media --> */}
@@ -39,9 +39,9 @@ const Footer = () => {
           style={{ backgroundColor: 'rgba(0, 0, 0, 0.2)' }}
         >
           © 2023 Copyright:
-          <a className="text-white" href="https://mdbootstrap.com/">
+          <p className="text-white">
             Austin, Jocelyn & Sylvia
-          </a>
+          </p>
         </div>
         {/* <!-- Copyright --> */}
       </footer>

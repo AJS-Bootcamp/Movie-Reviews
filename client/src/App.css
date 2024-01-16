@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  /* border: 1px solid red; */
 }
 
 html {
@@ -34,12 +35,14 @@ div.container-fluid a {
 
 .navbar {
   width: 100%;
-  height: 80px;
-  position: fixed; /*always be on top*/
+  height: 10vh;
+  /* position: fixed; always be on top */
   top: 0;
   left: 0;
   padding: 0 4%; /*left and right*/
-  background: #0c111b;
+  /* background: #0c111b; */
+  background-color: #09063d;
+  color: #faeded;
   z-index: 9;
   display: flex;
   align-items: center;
@@ -51,11 +54,6 @@ div.container-fluid a {
   margin-right: 2rem;
   max-width: 4rem;
   align-self: center;
-}
-
-.navbar {
-  background-color: #09063d;
-  color: #faeded;
 }
 
 .navbar ul,
@@ -101,7 +99,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+
   margin: 0;
 }
 
@@ -125,10 +123,30 @@ footer {
   justify-content: space-around;
   align-items: center;
   margin-top: 20px;
-  min-height: 10vh;
+  height: 10vh;
   color: white;
   font-size: 1.25rem;
 }
+
+
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  height: 90vh;
+}
+
+
+.App-background-Logo > img {
+  padding-top: 50px;
+  height: 300px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
 
 
 .trending-list {
@@ -137,16 +155,20 @@ footer {
   justify-content: flex-start;
   gap: 20px;
   overflow-x: scroll;
-  overflow-y: hidden;
-  padding-top: 100px;
-  padding-bottom: 25px;
-  padding-right: 25px;
-  padding-left: 25px;
+  padding: 100px 25px 25px;
+  width: 100vw;
 }
 
 .trending-list > h2 {
+  position: sticky;
+  left: 0px;
+  z-index: 1;
   color: white;
+  /* background-color: lightgray; */
+  opacity: 0.8;
   font-size: 2em;
+  text-shadow: 3px 3px 8px black;
+  padding: 5px;
   text-align: center;
   align-self: center;
 }
@@ -154,7 +176,7 @@ footer {
 .movie-container {
   position: relative;
   height: 300px;
-  width: 300px;
+  width: 200px;
 }
 
 .movie-poster {
@@ -168,8 +190,8 @@ footer {
 
 .movie-details {
   position: absolute;
-  height: 100%;
-  width: 100%;
+  height: 300px;
+  width: 200px;
   top: 50%;
   left: 50%;
   background-color: black;
@@ -192,6 +214,7 @@ footer {
 
 .movie-container:hover .movie-details {
   opacity: 0.8;
+
 }
 
 .movie-details > h3 {

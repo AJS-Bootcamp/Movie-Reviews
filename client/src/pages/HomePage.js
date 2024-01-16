@@ -4,11 +4,11 @@ import logo from '../app/assets/img/MoviesAJS.png';
 
 import '../App.css';
 import NavigationGenre from '../components/NavigationGenre';
+import TrendingList from '../components/movies/trendingList';
 
 function Homepage() {
   const [movies, setMovies] = React.useState([]);
   const [loading, setLoading] = useState(false);
-  const IMG_PATH = 'https://image.tmdb.org/t/p/w1280';
 
   async function fetchData() {
     try {
@@ -36,23 +36,8 @@ function Homepage() {
       </div>
       <div>
         {loading
-          ? 'Loading...'
-          : movies.map((movie, index) => {
-              const { poster_path, title, overview } = movie;
-
-              return (
-                <div className="movie" key={index}>
-                  <img
-                    src={`${IMG_PATH + poster_path}`}
-                    alt={`${title} Poster`}
-                  />
-                  <h3>{title}</h3>
-                  <p>{overview}</p>
-                </div>
-              );
-            })}
-
-        <p>{!movies ? 'Loading...' : movies}</p>
+          ? (<p>Loading...</p>)
+          : <TrendingList />}
       </div>
       <div style={{ display: 'flex', justifyContent: 'center' }}>
         <NavigationGenre />

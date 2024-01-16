@@ -4,8 +4,8 @@ import Footer from '../src/components/Footer';
 import Header from '../src/components/Header';
 import '../src/App.css';
 import User from '../src/pages/User';
-import Watchlist from '../src/components/Watchlist';
-import Favorites from '../src/components/Favorites';
+import Watchlist from '../src/components/movies/WatchList';
+import Favorites from '../src/components/movies/Favorites';
 import LoginPage from './pages/LoginPage';
 import TestPage from './pages/TestPage';
 

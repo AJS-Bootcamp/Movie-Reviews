@@ -36,7 +36,7 @@ const TrendingList = () => {
 
   return (
     <div className="trending-list">
-      <h2> Trending Movies </h2>
+      <h2>Trending Movies </h2>
       {loading ? (
         <p>Loading...</p>
       ) : (

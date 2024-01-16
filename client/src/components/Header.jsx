@@ -19,7 +19,7 @@ function Header() {
     <div className="header">
       <Navbar>
         <NavbarBrand href="/">
-          <div class="container-fluid">
+          <div className="container-fluid">
             <img src={LogoAJS} alt="team logo" onClick={handleClick} />
             <h1>Movies Review</h1>
           </div>
