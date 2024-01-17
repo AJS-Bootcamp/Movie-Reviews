@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  /* border: 1px solid red; */
+  border: 1px solid red;
 }
 
 html {
@@ -201,7 +201,7 @@ footer {
   display: block;
   object-fit: contain;
   height: 100%;
-  /* width: auto; */
+  /* width: 100%; */
   transition: 0.5s ease;
 }
 
