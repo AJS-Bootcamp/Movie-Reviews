@@ -3,7 +3,7 @@ import React from 'react';
 const Movie = ({movie}) => {
   const IMG_PATH = 'https://image.tmdb.org/t/p/w1280';
 
-  const {poster_path, title, overview} = movie
+  const {poster_path, title, overview} = movie;
 
   return (
     <div className="movie-container">

@@ -1,54 +1,68 @@
-// {
-//   /* <div class="video-card-container">
-//   <div class="video-card">
-//     <img src="images/disney.PNG" class="video-card-image" alt="" />
-//     <video src="videos/disney.mp4" mute loop class="card-video"></video>
-//   </div>
-//   <div class="video-card">
-//     <img src="images/pixar.PNG" class="video-card-image" alt="" />
-//     <video src="videos/pixar.mp4" mute loop class="card-video"></video>
-//   </div>
-//   <div class="video-card">
-//     <img src="images/marvel.PNG" class="video-card-image" alt="" />
-//     <video src="videos/marvel.mp4" mute loop class="card-video"></video>
-//   </div>
-//   <div class="video-card">
-//     <img src="images/star-wars.PNG" class="video-card-image" alt="" />
-//     <video src="videos/star-war.mp4" mute loop class="card-video"></video>
-//   </div>
-//   <div class="video-card">
-//     <img src="images/geographic.PNG" class="video-card-image" alt="" />
-//     <video src="videos/geographic.mp4" mute loop class="card-video"></video>
-//   </div>
-// </div>; */
-// }
+import React, { useState, useEffect } from 'react';
+import trendingImage from './genre/trending.png';
+import actionImage from './genre/action.png';
 
-import { NavLink } from 'react-router-dom';
-
-// {
-//   /* <Route path="/movies/action" component={ActionMovies} /> */
-// }
 function NavigationGenre() {
+  const [trendingMovies, setTrendingMovies] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null); // Add state for error
+
+  useEffect(() => {
+    const getTrendingMovies = async () => {
+      const moviesFromServer = await fetchData();
+      setTrendingMovies(moviesFromServer);
+    };
+
+    getTrendingMovies();
+  }, []);
+
+  async function fetchData() {
+    try {
+      setLoading(true);
+      const response = await fetch('/api/movies/trending');
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.log(`Error Fetching Data: ${error.message}`);
+      setError(error.message); // Set error state
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  const IMG_PATH = 'https://image.tmdb.org/t/p/w1280';
+
   return (
-    <nav className="navgenre">
-      <ul className="navbar-nav">
-        <li>
-          <NavLink to="/movies/action" className="nav-link">
-            Action
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/movies/drama" className="nav-link">
-            Drama
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/movies/comedy" className="nav-link">
-            Comedy
-          </NavLink>
-        </li>
-      </ul>
-    </nav>
+    <div className="video-card-container">
+      {error && <div>Error: {error}</div>}
+      <button className="image-button">
+        <img src={trendingImage} alt="Trending" />
+        {!loading && trendingMovies.length > 0 && (
+          <div
+            className="hover-poster poster"
+            style={{
+              backgroundImage: `url(${
+                IMG_PATH + trendingMovies[0].poster_path
+              })`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+            }}
+          >
+            {/* <img
+              className="movie-poster"
+              src={`${IMG_PATH + trendingMovies[0].poster_path}`}
+              alt={`${trendingMovies[0].title} Poster`}
+            /> */}
+          </div>
+        )}
+      </button>
+      <button className="image-button">
+        <img src={actionImage} alt="Action" />
+      </button>
+    </div>
   );
 }
 
