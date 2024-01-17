@@ -11,7 +11,7 @@ function Navigation() {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/Trending" className="fs-4">
+            <NavLink to="/trendingmovies" className="fs-4">
               Trending
             </NavLink>
           </li>

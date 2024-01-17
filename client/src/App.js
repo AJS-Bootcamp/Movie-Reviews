@@ -8,6 +8,7 @@ import Watchlist from '../src/components/movies/WatchList';
 import Favorites from '../src/components/movies/Favorites';
 import LoginPage from './pages/LoginPage';
 import TestPage from './pages/TestPage';
+import TrendingPage from './pages/TrendingPage';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Homepage />} />
+        <Route path="/trendingmovies" element={<TrendingPage />} />
         <Route path="/User" element={<User />} />
         <Route path="LoginPage" element={<LoginPage />} />
         <Route path="/User/:userId/favorites" element={<Favorites />} />

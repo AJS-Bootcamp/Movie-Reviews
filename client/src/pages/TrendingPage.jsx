@@ -1,12 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import Movie from './Movie';
+import { useState, useEffect } from 'react';
+import Movie from '../components/movies/Movie';
 
-
-const TrendingList = () => {
+const TrendingPage = () => {
   const [trendingMovies, setTrendingMovies] = useState([]);
   const [loading, setLoading] = useState(false);
-
-
 
   useEffect(() => {
     const getTrendingMovies = async () => {
@@ -35,17 +32,19 @@ const TrendingList = () => {
   }
 
   return (
-    <div className="trending-list">
+    <div className='trending-page'>
       <h2>Trending Movies</h2>
-      {loading ? (
-        <p>Loading...</p>
-      ) : (
+      <div className="trending-grid">
+        {loading ? (
+          <p>Loading...</p>
+        ) : (
           trendingMovies.map((trendingMovie) => (
             <Movie key={trendingMovie.id} movie={trendingMovie} />
           ))
-      )}
+        )}
+      </div>
     </div>
   );
 };
 
-export default TrendingList;
+export default TrendingPage;
