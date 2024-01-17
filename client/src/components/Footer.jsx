@@ -39,9 +39,7 @@ const Footer = () => {
           style={{ backgroundColor: 'rgba(0, 0, 0, 0.2)' }}
         >
           © 2023 Copyright:
-          <p className="text-white">
-            Austin, Jocelyn & Sylvia
-          </p>
+          <p className="text-white">Austin, Jocelyn & Sylvia</p>
         </div>
         {/* <!-- Copyright --> */}
       </footer>

@@ -145,61 +145,21 @@ router.get('/romance', async (req, res, next) => {
 });
 //End of movies Romance
 
-// // Define the searchMovies function in the global scope
-// export function searchMovies() {
-//   const searchInput = document.getElementById("search-input");
-//   const moviesContainer = document.getElementById("results-container");
-//   const searchQuery = searchInput.value;
-//   const APIKEY = process.env.OPEN_MOVIE_API_KEY;
-//   const apiUrl = `https://api.themoviedb.org/3/search/movie?api_key=${APIKEY}&query=${searchQuery}`;
+//Animation Movies Section
+const ANIMATION_API_URL = `https://api.themoviedb.org/3/discover/movie?api_key=${APIKEY}&with_genres=16`;
 
-//   console.log(searchInput.value); //this was to check if the search bar was working, how many letters were typed in
-
-//   fetch(apiUrl)
-//     .then((response) => response.json())
-//     .then((data) => {
-//       const movies = data.results;
-
-//       if (movies.length > 0) {
-//         displayMovies(movies); // Call the displayMovies function to show the movies
-//       } else {
-//         moviesContainer.style.display = "none"; // Hide the movies container if nothing was found
-//       }
-//     })
-//     .catch((error) => console.error(error));
-// }
-
-// function displayMovies(movies) {
-//   const moviesContainer = document.getElementById("results-container");
-//   const moviesList = moviesContainer.querySelector(".movies-list");
-//   moviesList.innerHTML = ""; // Clear the container before adding new movies
-
-//   moviesContainer.style.display = "flex";
-
-//   movies.forEach((movie) => {
-//     const movieElement = document.createElement("div");
-//     movieElement.classList.add("movie");
-
-//     const movieTitle = document.createElement("h2");
-//     movieTitle.textContent = movie.title;
-
-//     const movieOverview = document.createElement("p");
-//     movieOverview.textContent = movie.overview;
-
-//     const moviePoster = document.createElement("img");
-//     moviePoster.src = `https://image.tmdb.org/t/p/w1280${movie.poster_path}`;
-//     moviePoster.alt = movie.title;
-
-//     // movieElement.appendChild(movieOverview);
-//     movieElement.appendChild(moviePoster);
-//     movieElement.appendChild(movieTitle);
-
-//     moviesList.appendChild(movieElement);
-//   });
-
-//   moviesContainer.scrollIntoView();
-// }
-
-// /*END OF SEARCH MOVIES SECTION*/
+router.get('/animation', async (req, res, next) => {
+  try {
+    const response = await fetch(ANIMATION_API_URL);
+    const data = await response.json();
+    res.json(data.results);
+  } catch (error) {
+    console.error('Error fetching animation movies:', error);
+    res
+      .status(500)
+      .json({ error: 'An error occurred while fetching animation movies' });
+  }
+});
+//End of movies Animation
 
 module.exports = router;
