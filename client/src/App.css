@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  border: 1px solid red;
+  /* border: 1px solid red; */
 }
 
 html {
@@ -159,11 +159,11 @@ footer {
 
 .trending-grid {
   display: grid;
-  grid-template-columns: repeat(4, 10%);
-  grid-template-rows: repeat(5, 20%);
+  grid-template-columns: repeat(10, 9.8%);
+  grid-template-rows: repeat(2, 50%);
   justify-items: center;
   justify-content: center;
-  gap: 20px 0;
+  gap: 10px 0;
 }
 
 .trending-list {
