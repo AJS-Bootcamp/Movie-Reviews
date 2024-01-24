@@ -5,6 +5,12 @@ import SearchBox from './SearchBox';
 import LogoAJS from '../app/assets/img/MovieAJS.png';
 import { Navbar, NavbarBrand } from 'reactstrap';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
+import { faUserTie } from '@fortawesome/free-solid-svg-icons';
+
+import Dropdown from 'react-bootstrap/Dropdown';
+
 function Navigation({ posts, setSearchResults }) {
   useEffect(() => {
     fetch('/api/posts')
@@ -61,18 +67,40 @@ function Navigation({ posts, setSearchResults }) {
               Drama
             </NavLink>
           </li>
-          {/* bring more and display more movies <FontAwesomeIcon icon="fa-solid fa-caret-down" /> */}
           <li>
-            <NavLink to="/movies" className="fs-4">
-              <i class="fa-solid fa-caret-down"></i>
-            </NavLink>
+            <div className="dropdown">
+              <button className="dropbtn">
+                {/* or <FontAwesomeIcon icon={faCircleChevronDown} /> */}
+                <FontAwesomeIcon icon={faCaretDown} />
+              </button>
+              <div className="dropdown-content">
+                <li>
+                  <NavLink to="/dramamovies" className="fs-4">
+                    Drama
+                  </NavLink>
+                </li>
+                <NavLink to="/horror" className="fs-4">
+                  Horror
+                </NavLink>
+                <NavLink to="/romance" className="fs-4">
+                  Romance
+                </NavLink>
+                <NavLink to="/scifi" className="fs-4">
+                  Sci-Fi
+                </NavLink>
+                <NavLink to="/thriller" className="fs-4">
+                  Thriller
+                </NavLink>
+              </div>
+            </div>
           </li>
+
           <li>
             <SearchBox posts={posts} setSearchResults={setSearchResults} />
           </li>
           <li>
-            {/* icon for user  <FontAwesomeIcon icon="fa-solid fa-user-tie" />*/}
             <div className="login">
+              <FontAwesomeIcon icon={faUserTie} />
               <NavLink to="/LoginPage" className="fs-4">
                 Login
               </NavLink>
