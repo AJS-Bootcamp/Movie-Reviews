@@ -70,7 +70,11 @@ function NavigationGenre() {
 
       {/*Action*/}
       <button className="image-button">
-        <img src={actionImage} alt="Action" />
+        <img
+          src={actionImage}
+          alt="Action"
+          style={{ filter: 'grayscale(1) invert(1)' }}
+        />
         {!loading && actionMovies.length > 0 && (
           <div
             className="hover-poster poster"
@@ -78,6 +82,7 @@ function NavigationGenre() {
               backgroundImage: `url(${IMG_PATH + actionMovies[0].poster_path})`,
               backgroundSize: 'cover',
               backgroundPosition: 'center',
+              borderRadius: '10px',
             }}
           />
         )}
@@ -85,7 +90,11 @@ function NavigationGenre() {
 
       {/*Animation*/}
       <button className="image-button">
-        <img src={animationImage} alt="Animation" />
+        <img
+          src={animationImage}
+          alt="Animation"
+          style={{ filter: 'grayscale(1) invert(1)' }}
+        />
         {!loading && animationMovies.length > 0 && (
           <div
             className="hover-poster poster"
@@ -95,6 +104,7 @@ function NavigationGenre() {
               })`,
               backgroundSize: 'cover',
               backgroundPosition: 'center',
+              borderRadius: '10px',
             }}
           />
         )}
@@ -102,7 +112,11 @@ function NavigationGenre() {
 
       {/*Comedy*/}
       <button className="image-button">
-        <img src={comedyImage} alt="Comedy" />
+        <img
+          src={comedyImage}
+          alt="Comedy"
+          style={{ filter: 'grayscale(1) invert(1)' }}
+        />
         {!loading && comedyMovies.length > 0 && (
           <div
             className="hover-poster poster"
@@ -110,6 +124,7 @@ function NavigationGenre() {
               backgroundImage: `url(${IMG_PATH + comedyMovies[0].poster_path})`,
               backgroundSize: 'cover',
               backgroundPosition: 'center',
+              borderRadius: '10px',
             }}
           />
         )}
@@ -117,7 +132,11 @@ function NavigationGenre() {
 
       {/*Drama*/}
       <button className="image-button">
-        <img src={dramaImage} alt="Drama" />
+        <img
+          src={dramaImage}
+          alt="Drama"
+          style={{ filter: 'grayscale(1) invert(1)' }}
+        />
         {!loading && dramaMovies.length > 0 && (
           <div
             className="hover-poster poster"
@@ -125,6 +144,7 @@ function NavigationGenre() {
               backgroundImage: `url(${IMG_PATH + dramaMovies[0].poster_path})`,
               backgroundSize: 'cover',
               backgroundPosition: 'center',
+              borderRadius: '10px',
             }}
           />
         )}
@@ -132,7 +152,11 @@ function NavigationGenre() {
 
       {/*Family*/}
       <button className="image-button">
-        <img src={familyImage} alt="Family" />
+        <img
+          src={familyImage}
+          alt="Family"
+          style={{ filter: 'grayscale(1) invert(1)' }}
+        />
         {!loading && familyMovies.length > 0 && (
           <div
             className="hover-poster poster"
@@ -140,6 +164,7 @@ function NavigationGenre() {
               backgroundImage: `url(${IMG_PATH + familyMovies[0].poster_path})`,
               backgroundSize: 'cover',
               backgroundPosition: 'center',
+              borderRadius: '10px',
             }}
           />
         )}
@@ -147,7 +172,11 @@ function NavigationGenre() {
 
       {/*Horror*/}
       <button className="image-button">
-        <img src={horrorImage} alt="Horror" />
+        <img
+          src={horrorImage}
+          alt="Horror"
+          style={{ filter: 'grayscale(1) invert(1)' }}
+        />
         {horrorMovies && !loading && horrorMovies.length > 0 && (
           <div
             className="hover-poster poster"
@@ -155,6 +184,7 @@ function NavigationGenre() {
               backgroundImage: `url(${IMG_PATH + horrorMovies[0].poster_path})`,
               backgroundSize: 'cover',
               backgroundPosition: 'center',
+              borderRadius: '10px',
             }}
           />
         )}
@@ -162,7 +192,11 @@ function NavigationGenre() {
 
       {/*Romance*/}
       <button className="image-button">
-        <img src={romanceImage} alt="Romance" />
+        <img
+          src={romanceImage}
+          alt="Romance"
+          style={{ filter: 'grayscale(1) invert(1)' }}
+        />
         {romanceMovies && !loading && romanceMovies.length > 0 && (
           <div
             className="hover-poster poster"
@@ -172,6 +206,7 @@ function NavigationGenre() {
               })`,
               backgroundSize: 'cover',
               backgroundPosition: 'center',
+              borderRadius: '10px',
             }}
           />
         )}
@@ -179,7 +214,11 @@ function NavigationGenre() {
 
       {/*Trending*/}
       <button className="image-button">
-        <img src={trendingImage} alt="Trending" />
+        <img
+          src={trendingImage}
+          alt="Trending"
+          style={{ filter: 'grayscale(1) invert(1)' }}
+        />
         {!loading && trendingMovies.length > 0 && (
           <div
             className="hover-poster poster"
@@ -189,6 +228,7 @@ function NavigationGenre() {
               })`,
               backgroundSize: 'cover',
               backgroundPosition: 'center',
+              borderRadius: '10px',
             }}
           />
         )}
