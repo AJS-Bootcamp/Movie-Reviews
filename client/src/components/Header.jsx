@@ -1,32 +1,11 @@
+import React from 'react';
 import Navigation from './Navigation';
-import LogoAJS from '../app/assets/img/MovieAJS.png';
-import { NavbarBrand } from 'reactstrap';
-import { useState } from 'react';
-
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
 
 function Header() {
-  const [showText, setShowText] = useState(false);
-
-  const handleClick = (event) => {
-    event.preventDefault();
-    setShowText(!showText);
-  };
-
   return (
-    <div className="header">
-      <Navbar>
-        <NavbarBrand href="/">
-          <div className="container-fluid">
-            <img src={LogoAJS} alt="team logo" onClick={handleClick} />
-            <h1>Movies Review</h1>
-          </div>
-        </NavbarBrand>
-        <Navigation />
-      </Navbar>
-    </div>
+    <>
+      <Navigation />
+    </>
   );
 }
 

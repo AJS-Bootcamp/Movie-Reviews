@@ -1,21 +1,25 @@
+/*Colors
+#071f3b | #09063d | #48caeb | white | #07052c 
+*/
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  border: 1px solid red;
 }
 
 html {
-  background-image: linear-gradient(to bottom, #165aa9 0%, #11045b 100%);
+  background-image: linear-gradient(to bottom, #071f3b 0%, #09063d 100%);
   margin: 0;
   padding: 0;
-}
-.btn {
-  background-image: linear-gradient(to top, #30cfd0 0%, #330867 100%);
 }
 
 /*Header*/
 /*navigation*/
+.btn {
+  background-image: linear-gradient(to top, #48caeb 0%, #882ef7 100%);
+}
+
 div.login {
   justify-content: flex-end;
 }
@@ -26,11 +30,12 @@ nav div.container-fluid {
   justify-content: space-between;
   align-items: center;
   max-width: 100vw;
-  min-height: 10vh;
 }
 
 div.container-fluid a {
   display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .navbar {
@@ -40,18 +45,18 @@ div.container-fluid a {
   top: 0;
   left: 0;
   padding: 0 4%; /*left and right*/
-  /* background: #0c111b; */
-  background-color: #09063d;
-  color: #faeded;
+  background-color: #071f3b;
+  color: white;
   z-index: 9;
   display: flex;
   align-items: center;
 }
 
+/*Logo brand*/
 .navbar-brand img {
   width: 100%;
   height: 100%;
-  margin-right: 2rem;
+  margin-right: 1rem;
   max-width: 4rem;
   align-self: center;
 }
@@ -62,7 +67,15 @@ div.container-fluid a {
   display: flex;
   flex-direction: row;
   gap: 20px;
-  padding: 0px 20px;
+  align-items: center;
+}
+
+.nav-list > li > ul {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  padding: 0;
 }
 
 .navbar li,
@@ -70,12 +83,23 @@ div.container-fluid a {
   font-size: 20px;
 }
 
+/* .nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+} */
+
 /* Style the links on hover */
 .navbar a,
 .footer-links a {
   text-decoration: none;
-  color: rgb(255, 255, 255);
-
+  color: white;
   /* Darker text color */
   transition: color 0.3s, text-decoration 0.3s;
   /* Add smooth transitions JUST ADDED*/
@@ -85,7 +109,6 @@ div.container-fluid a {
 .navbar a:hover,
 a:hover {
   color: #48caeb;
-  /* Blue color */
   text-decoration: underline;
   background: linear-gradient(120deg, #5b0587, #ff0080, #ee3ce8);
   /* background-size: 200% 200%; */
@@ -95,11 +118,81 @@ a:hover {
   /* transform: scale(1.1,1.1); */
 }
 
-body {
+/*Search box*/
+.search {
+  width: 90%;
+  font-size: 2rem;
+  border-bottom: 2px solid #07052c;
+  border-right: 2px solid #07052c;
+  overflow: hidden;
+  font-size: 1rem;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-flow: row nowrap;
 }
+
+.search__button:hover,
+.search__input:hover {
+  background-color: white;
+}
+
+.search:focus-within {
+  box-shadow: 2px 2px 5px #48caeb;
+}
+
+.search__button,
+.search__input {
+  border: none;
+  outline: none;
+  height: 30px;
+  background: #071f3b;
+}
+
+.search__input {
+  width: 90%;
+  width: 500px;
+}
+
+.search__button {
+  width: 15%;
+  font-size: 30px;
+  padding-right: 0.5em;
+  color: #09063d;
+  display: grid;
+  place-content: center;
+}
+
+.search-icon {
+  font-size: 25px;
+}
+
+.search__container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+@media (min-width: 576px) {
+  .search {
+    font-size: 1.5rem;
+  }
+
+  .search__button {
+    font-size: 2rem;
+  }
+}
+
+@media (min-width: 800px) {
+  .search {
+    width: 75%;
+    font-size: 2rem;
+  }
+
+  .search__button {
+    padding-right: 0.5em;
+    font-size: 3rem;
+  }
+}
+/*End of Search box*/
 
 /* User */
 .user {
@@ -123,9 +216,10 @@ footer {
   padding: 50px 0;
   height: 10vh;
   color: white;
-  background-color: #09063d;
+  background-color: #07052c;
   /* font-size: 1.25rem; */
 }
+/*End of footer*/
 
 .App {
   display: flex;
@@ -144,6 +238,7 @@ footer {
   /* display: block; */
 }
 
+/*Trending*/
 .trending-page {
   height: 100%;
   width: 100vw;
@@ -184,7 +279,7 @@ footer {
   /* background-color: lightgray; */
   opacity: 0.8;
   font-size: 2em;
-  text-shadow: 3px 3px 8px black;
+  text-shadow: 3px 3px 8px #07052c;
   padding: 5px;
   text-align: center;
   align-self: center;
@@ -212,7 +307,7 @@ footer {
   max-width: 150px;
   top: 50%;
   left: 50%;
-  background-color: black;
+  background-color: #07052c;
   color: white;
   text-align: center;
   opacity: 0;
@@ -243,13 +338,17 @@ footer {
   line-height: 1.3;
   padding: 8px 8px;
 }
+/*End of Trending*/
 
 /*NavigationGenre*/
 .image-button {
-  border: 1px solid red;
-  background: transparent;
+  border: 2px solid #09063d;
+  border-radius: 10px;
+  background-color: #092443;
+  /* background: transparent; */
   cursor: pointer;
   position: relative;
+  margin: 2.5px;
 }
 
 .image-button img {
@@ -269,6 +368,7 @@ footer {
   transition: opacity 0.3s ease;
   height: 100%; /* Make the poster fill the entire height of the button */
   width: 100%; /* Make the poster fill the entire width of the button */
+  box-shadow: 2px 2px 5px #48caeb;
 }
 
 .poster {
