@@ -69,6 +69,8 @@ function Navigation({ posts, setSearchResults }) {
           </li>
           <li>
             <div className="dropdown">
+              function Dropdown() {'{'}
+              
               <button className="dropbtn">
                 {/* or <FontAwesomeIcon icon={faCircleChevronDown} /> */}
                 <FontAwesomeIcon icon={faCaretDown} />
