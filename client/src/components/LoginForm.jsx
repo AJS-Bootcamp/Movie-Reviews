@@ -1,105 +1,91 @@
-import { useState } from "react";
-import { Button, Label, Col, FormGroup } from "reactstrap";
-import { Formik, Field, Form, ErrorMessage } from "formik";
-// import { validateContactForm } from "../utils/validateContactForm";
+import React, { useState } from 'react';
+import styles from './LoginForm.module.css';
+import { FaRegUserCircle } from 'react-icons/fa';
+import { MdOutlineEmail } from 'react-icons/md';
+import { RiLockPasswordLine } from 'react-icons/ri';
 
 const LoginForm = () => {
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [action, setAction] = useState('Sign Up');
 
-  const handleSubmit = (values, { resetForm }) => {
-    console.log("form values:", values);
-    console.log("in JSON format:", JSON.stringify(values));
+  const handleSubmit = async (event) => {
+    event.preventDefault(); // Prevent the default form submission behavior
 
-    const isValidUser = true;
+    const url = 'http://localhost:3001/users/login';
+    const formElements = event.target.elements;
 
-    if (isValidUser) {
-      setLoggedIn(true);
-      resetForm();
-      alert("You are logged in");
-    } else {
-      alert("Invalid credentials. Please create a new account.");
+    const values = {
+      username: formElements.username ? formElements.username.value : '',
+      email: formElements.email.value,
+      password: formElements.password.value,
+    };
+
+    try {
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(values),
+      });
+
+      const responseData = await response.json();
+      console.log('Response:', responseData);
+    } catch (error) {
+      console.error('Error:', error);
     }
   };
 
   return (
-    <div className="d-flex flex-column align-items-center justify-content-center">
-      {loggedIn ? (
-        <p>You are logged in.</p>
-      ) : (
-        <Formik
-          initialValues={{
-            firstName: "",
-            lastName: "",
-            email: "",
-          }}
-          onSubmit={handleSubmit}
-          // validate={validateContactForm}
-        >
-          {({ errors, touched, isValid }) => (
-            <Form className="w-100">
-              <FormGroup row className="mb-3">
-                <Label htmlFor="firstName" md="2">
-                  First Name
-                </Label>
-                <Col md="10">
-                  <Field
-                    name="firstName"
-                    placeholder="First Name"
-                    className="form-control"
-                  />
-                  <ErrorMessage name="firstName">
-                    {(msg) => <p className="text-danger">{msg}</p>}
-                  </ErrorMessage>
-                </Col>
-              </FormGroup>
-              <FormGroup row className="mb-3">
-                <Label htmlFor="lastName" md="2">
-                  Last Name
-                </Label>
-                <Col md="10">
-                  <Field
-                    name="lastName"
-                    placeholder="Last Name"
-                    className="form-control"
-                  />
-                  <ErrorMessage name="lastName">
-                    {(msg) => <p className="text-danger">{msg}</p>}
-                  </ErrorMessage>
-                </Col>
-              </FormGroup>
-
-              <FormGroup row className="mb-3">
-                <Label htmlFor="email" md="2">
-                  Email
-                </Label>
-                <Col md="10">
-                  <Field
-                    name="email"
-                    placeholder="Email"
-                    type="email"
-                    className="form-control"
-                  />
-                  <ErrorMessage name="email">
-                    {(msg) => <p className="text-danger">{msg}</p>}
-                  </ErrorMessage>
-                </Col>
-              </FormGroup>
-
-              <FormGroup row className="text-end">
-                <Col md={{ size: 10, offset: 2 }}>
-                  <Button
-                    type="submit"
-                    color="primary"
-                    disabled={!isValid || !touched}
-                  >
-                    {loggedIn ? "Send Feedback" : "Log In"}
-                  </Button>
-                </Col>
-              </FormGroup>
-            </Form>
+    <div className={styles.container}>
+      <form onSubmit={handleSubmit}>
+        <div className={styles.header}>
+          <div className={styles.text}>{action}</div>
+          <div className={styles.underline}></div>
+        </div>
+        <div className={styles.inputs}>
+          {action === 'Login' ? (
+            <div></div>
+          ) : (
+            <div className={styles.input}>
+              <FaRegUserCircle />
+              <input type="text" name="username" placeholder="Name" />
+            </div>
           )}
-        </Formik>
-      )}
+          <div className={styles.input}>
+            <MdOutlineEmail />
+            <input type="email" name="email" placeholder="Email" />
+          </div>
+          <div className={styles.input}>
+            <RiLockPasswordLine />
+            <input type="password" name="password" placeholder="Password" />
+          </div>
+        </div>
+        {action === 'Sign Up' ? (
+          <div></div>
+        ) : (
+          <div className={styles['forgot-password']}>
+            Forgot Password? <span>Click Here!</span>
+          </div>
+        )}
+        <div className={styles['submit-container']}>
+          <div
+            className={action === 'Login' ? `${styles.submit} ${styles.gray}` : styles.submit}
+            onClick={() => {
+              setAction('Sign Up');
+            }}
+          >
+            Sign Up
+          </div>
+          <div
+            className={action === 'Sign Up' ? `${styles.submit} ${styles.gray}` : styles.submit}
+            onClick={() => {
+              setAction('Login');
+            }}
+          >
+            Login
+          </div>
+        </div>
+      </form>
     </div>
   );
 };
