@@ -110,3 +110,19 @@
     height: 100%; */
   align-items: flex-end;
 }
+
+.checkRed {
+  color: red;
+}
+
+.checkWhite {
+  color: white;
+}
+
+.starGold {
+  color: gold;
+}
+
+.starWhite {
+  color: white;
+}
