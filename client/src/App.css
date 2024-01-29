@@ -18,7 +18,7 @@ html {
 /*Header*/
 /*navigation*/
 .btn {
-  background-image: linear-gradient(to top, #48caeb 0%, #882ef7 100%);
+  background-image: linear-gradient(to top, #48caeb 0%, #05f3eb 100%);
 }
 
 div.login {

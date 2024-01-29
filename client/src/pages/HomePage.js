@@ -36,13 +36,14 @@ function Homepage() {
           alt="logo"
           style={{ filter: 'grayscale(1) invert(1)' }}
         />
-        <h2>Find Your Movies Here</h2>
-        <button onClick={() => fetchData()}>Find Your Movies</button>
+        <h1>Carrousel</h1>
+        {/* <h2>Find Your Movies Here</h2>
+        <button onClick={() => fetchData()}>Find Your Movies</button> */}
       </div>
-      <div>{loading ? <p>Loading...</p> : <TrendingList />}</div>
       <div style={{ display: 'flex', justifyContent: 'center' }}>
         <NavigationGenre />
       </div>
+      <div>{loading ? <p>Loading...</p> : <TrendingList />}</div>
     </div>
   );
 }
