@@ -5,7 +5,7 @@ import { MdOutlineEmail } from 'react-icons/md';
 import { RiLockPasswordLine } from 'react-icons/ri';
 
 const LoginForm = () => {
-  const [action, setAction] = useState('Sign Up');
+  const [action, setAction] = useState('Sign up');
 
   const handleSubmit = async (event) => {
     event.preventDefault(); // Prevent the default form submission behavior

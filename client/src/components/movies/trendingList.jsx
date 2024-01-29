@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Movie from './Movie';
+import styles from './movieList.module.css';
 
 
 const TrendingList = () => {
@@ -35,7 +36,7 @@ const TrendingList = () => {
   }
 
   return (
-    <div className="trending-list">
+    <div className={styles.trendingList}>
       <h2>Trending Movies</h2>
       {loading ? (
         <p>Loading...</p>
