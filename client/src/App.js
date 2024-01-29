@@ -2,7 +2,10 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Homepage from '../src/pages/HomePage';
 import Footer from '../src/components/Footer';
 import Header from '../src/components/Header';
-import '../src/App.css';
+
+// import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css';
+
 import User from '../src/pages/User';
 import Watchlist from '../src/components/movies/WatchList';
 import Favorites from '../src/components/movies/Favorites';
@@ -16,7 +19,6 @@ import DramaPage from './pages/DramaPage';
 import FamilyPage from './pages/FamilyPage';
 import HorrorPage from './pages/HorrorPage';
 import RomancePage from './pages/RomancePage';
-
 
 function App() {
   return (
@@ -33,10 +35,10 @@ function App() {
         <Route path="/familymovies" element={<FamilyPage />} />
         <Route path="/horrormovies" element={<HorrorPage />} />
         <Route path="/romancemovies" element={<RomancePage />} />
-        <Route path="/User" element={<User />} />
-        <Route path="LoginPage" element={<LoginPage />} />
-        <Route path="/User/:userId/favorites" element={<Favorites />} />
-        <Route path="/User/:userId/watchlist" element={<Watchlist />} />
+        <Route path="/user" element={<User />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/user/:userId/favorites" element={<Favorites />} />
+        <Route path="/user/:userId/watchlist" element={<Watchlist />} />
         <Route path="/testpage" element={<TestPage />} />
       </Routes>
 

@@ -10,6 +10,11 @@ import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
 import { faUserTie } from '@fortawesome/free-solid-svg-icons';
 
 import Dropdown from 'react-bootstrap/Dropdown';
+import Button from 'react-bootstrap/Button';
+import ButtonGroup from 'react-bootstrap/ButtonGroup';
+
+// import 'bootstrap/dist/css/bootstrap.min.css';
+// import '../App.css';
 
 function Navigation({ posts, setSearchResults }) {
   useEffect(() => {
@@ -62,50 +67,94 @@ function Navigation({ posts, setSearchResults }) {
               Comedy
             </NavLink>
           </li>
+
+          {/* Dropdown menu */}
           <li>
-            <NavLink to="/dramamovies" className="fs-4">
-              Drama
-            </NavLink>
-          </li>
-          <li>
-            <div className="dropdown">
-              function Dropdown() {'{'}
-              
-              <button className="dropbtn">
-                {/* or <FontAwesomeIcon icon={faCircleChevronDown} /> */}
-                <FontAwesomeIcon icon={faCaretDown} />
-              </button>
-              <div className="dropdown-content">
-                <li>
+            <Dropdown data-bs-theme="dark">
+              <Dropdown.Toggle
+                id="dropdown-basic"
+                style={{ padding: '5px', fontSize: '18px', width: '100px' }}
+              >
+                More <FontAwesomeIcon icon={faCaretDown} />
+              </Dropdown.Toggle>
+
+              <Dropdown.Menu>
+                <Dropdown.Item>
                   <NavLink to="/dramamovies" className="fs-4">
                     Drama
                   </NavLink>
-                </li>
-                <NavLink to="/horror" className="fs-4">
-                  Horror
-                </NavLink>
-                <NavLink to="/romance" className="fs-4">
-                  Romance
-                </NavLink>
-                <NavLink to="/scifi" className="fs-4">
-                  Sci-Fi
-                </NavLink>
-                <NavLink to="/thriller" className="fs-4">
-                  Thriller
-                </NavLink>
-              </div>
-            </div>
+                </Dropdown.Item>
+
+                <Dropdown.Item>
+                  <NavLink to="/familymovies" className="fs-4">
+                    Family
+                  </NavLink>
+                </Dropdown.Item>
+
+                <Dropdown.Item>
+                  <NavLink to="/horrormovies" className="fs-4">
+                    Horror
+                  </NavLink>
+                </Dropdown.Item>
+
+                <Dropdown.Item>
+                  <NavLink to="/romancemovies" className="fs-4">
+                    Romance
+                  </NavLink>
+                </Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
           </li>
 
           <li>
             <SearchBox posts={posts} setSearchResults={setSearchResults} />
           </li>
+
+          {/* Login with dropdown split dropdown */}
           <li>
             <div className="login">
-              <FontAwesomeIcon icon={faUserTie} />
-              <NavLink to="/LoginPage" className="fs-4">
-                Login
-              </NavLink>
+              <Dropdown as={ButtonGroup}>
+                <Button
+                  variant="success"
+                  style={{ padding: '5px', fontSize: '18px', width: '100px' }}
+                >
+                  <div style={{ display: 'flex', alignItems: 'center' }}>
+                    <NavLink to="/login" className="fs-4">
+                      Login
+                    </NavLink>
+                    <FontAwesomeIcon icon={faUserTie} />
+                  </div>
+                </Button>
+
+                <Dropdown.Toggle
+                  split
+                  variant="success"
+                  id="dropdown-split-basic"
+                  style={{ padding: '5px', fontSize: '18px', width: '30px' }}
+                >
+                  <FontAwesomeIcon icon={faCaretDown} />
+                </Dropdown.Toggle>
+
+                <Dropdown.Menu>
+                  <Dropdown.Item>
+                    <NavLink to="/login" className="fs-4">
+                      Profile
+                    </NavLink>
+                  </Dropdown.Item>
+
+                  <Dropdown.Item>
+                    <NavLink to="/Favorites" className="fs-4">
+                      Favorites
+                    </NavLink>
+                  </Dropdown.Item>
+
+                  <Dropdown.Item>
+                    <NavLink to="/Watchlist" className="fs-4">
+                      Watchlist
+                    </NavLink>
+                  </Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
             </div>
           </li>
         </ul>
