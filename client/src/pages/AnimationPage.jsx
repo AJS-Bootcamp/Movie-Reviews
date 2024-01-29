@@ -20,15 +20,15 @@ const Movie = ({ movie }) => {
         <div className={styles.movieDetails}>
           <h3>{title}</h3>
           <p>{overview}</p>
-          <div className={styles.icons}>
-            <FontAwesomeIcon className={styles.star} icon={faStar} size="2xl" />
-            <FontAwesomeIcon
-              className={styles.check}
-              icon={faCircleCheck}
-              size="2xl"
-            />
-          </div>
         </div>
+      </div>
+      <div className={styles.icons}>
+        <FontAwesomeIcon className={styles.star} icon={faStar} size="2xl" />
+        <FontAwesomeIcon
+          className={styles.check}
+          icon={faCircleCheck}
+          size="2xl"
+        />
       </div>
     </div>
   );

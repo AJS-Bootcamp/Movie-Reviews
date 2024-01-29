@@ -103,7 +103,7 @@ function Navigation({ posts, setSearchResults }) {
           <li>
             <div className="login">
               <FontAwesomeIcon icon={faUserTie} />
-              <NavLink to="/LoginPage" className="fs-4">
+              <NavLink to="/login" className="fs-4">
                 Login
               </NavLink>
             </div>

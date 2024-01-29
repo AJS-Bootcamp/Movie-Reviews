@@ -33,10 +33,10 @@ function App() {
         <Route path="/familymovies" element={<FamilyPage />} />
         <Route path="/horrormovies" element={<HorrorPage />} />
         <Route path="/romancemovies" element={<RomancePage />} />
-        <Route path="/User" element={<User />} />
-        <Route path="LoginPage" element={<LoginPage />} />
-        <Route path="/User/:userId/favorites" element={<Favorites />} />
-        <Route path="/User/:userId/watchlist" element={<Watchlist />} />
+        <Route path="/user" element={<User />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/user/:userId/favorites" element={<Favorites />} />
+        <Route path="/user/:userId/watchlist" element={<Watchlist />} />
         <Route path="/testpage" element={<TestPage />} />
       </Routes>
 
