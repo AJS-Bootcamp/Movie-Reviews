@@ -111,18 +111,23 @@
   align-items: flex-end;
 }
 
-.checkRed {
-  color: red;
+.checkSelected {
+  color: black;
+  background-color: white;
+  border-radius: 50%;
+  /* border-style: white 3px groove; */
 }
 
-.checkWhite {
+.checkUnselected {
   color: white;
 }
 
-.starGold {
-  color: gold;
+.starSelected {
+  color: black;
+  background-color: white;
+  border-radius: 50%;
 }
 
-.starWhite {
+.starUnselected {
   color: white;
 }

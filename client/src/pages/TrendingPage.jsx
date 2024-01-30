@@ -56,6 +56,9 @@ import { faStar } from '@fortawesome/free-regular-svg-icons';
 import { faCircleCheck } from '@fortawesome/free-regular-svg-icons';
 
 const Movie = ({ movie }) => {
+  const [starClicked, setStarClicked] = useState(false);
+  const [checkClicked, setCheckClicked] = useState(false);
+
   const IMG_PATH = 'https://image.tmdb.org/t/p/w1280';
 
   const { poster_path, title, overview } = movie;
@@ -74,12 +77,36 @@ const Movie = ({ movie }) => {
         </div>
       </div>
       <div className={styles.icons}>
-        <FontAwesomeIcon className={styles.star} icon={faStar} size="2xl" />
-        <FontAwesomeIcon
-          className={styles.check}
-          icon={faCircleCheck}
-          size="2xl"
-        />
+        {!starClicked ? (
+          <FontAwesomeIcon
+            onClick={(e) => setStarClicked(!starClicked)}
+            className={styles.starUnselected}
+            icon={faStar}
+            size="2xl"
+          />
+        ) : (
+          <FontAwesomeIcon
+            onClick={(e) => setStarClicked(!starClicked)}
+            className={styles.starSelected}
+            icon={faStar}
+            size="2xl"
+          />
+        )}
+        {!checkClicked ? (
+          <FontAwesomeIcon
+            onClick={(e) => setCheckClicked(!checkClicked)}
+            className={styles.checkUnselected}
+            icon={faCircleCheck}
+            size="2xl"
+          />
+        ) : (
+          <FontAwesomeIcon
+            onClick={(e) => setCheckClicked(!checkClicked)}
+            className={styles.checkSelected}
+            icon={faCircleCheck}
+            size="2xl"
+          />
+        )}
       </div>
     </div>
   );

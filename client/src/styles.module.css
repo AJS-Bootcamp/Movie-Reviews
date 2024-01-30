@@ -99,11 +99,23 @@
 }
 
 
-/* .star {
-
+.checkSelected {
+  color: black;
+  background-color: white;
+  border-radius: 50%;
+  /* border-style: white 3px groove; */
 }
 
-.check {
-  
-}  */
+.checkUnselected {
+  color: white;
+}
 
+.starSelected {
+  color: black;
+  background-color: white;
+  border-radius: 50%;
+}
+
+.starUnselected {
+  color: white;
+}

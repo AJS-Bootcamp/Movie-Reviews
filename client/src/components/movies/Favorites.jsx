@@ -1,11 +1,19 @@
-import React from 'react'
+import React, { useState} from 'react';
+import Movie from './Movie';
+import styles from './movieList.module.css';
 
 const Favorites = () => {
-  return (
-    <div>
-      Favorites
-    </div>
-  )
-}
+  const [favoriteMovies, setFavoriteMovies] = useState([]);
 
-export default Favorites
+
+  return (
+    <div className={styles.trendingList}>
+      <h2>Favorites</h2>
+        {favoriteMovies.map((favorite) => (
+          <Movie key={favorite.id} movie={favorite} />
+        ))}
+    </div>
+  );
+};
+
+export default Favorites;
