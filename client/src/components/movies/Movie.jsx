@@ -8,14 +8,9 @@ const Movie = ({ movie }) => {
   const [starClicked, setStarClicked] = useState(false);
   const [checkClicked, setCheckClicked] = useState(false);
 
-  const [favorites, setFavorites] = useState([]);
-
   const IMG_PATH = 'https://image.tmdb.org/t/p/w1280';
 
   const { poster_path, title, overview } = movie;
-
-
-  
 
   return (
     <div className={styles.movieContainer}>
