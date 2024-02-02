@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import '../App.css';
 
 import { NavLink } from 'react-router-dom';
 import SearchBox from './SearchBox';
@@ -6,15 +7,22 @@ import LogoAJS from '../app/assets/img/MovieAJS.png';
 import { Navbar, NavbarBrand } from 'reactstrap';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
+// import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
 import { faUserTie } from '@fortawesome/free-solid-svg-icons';
 
-import Dropdown from 'react-bootstrap/Dropdown';
-import Button from 'react-bootstrap/Button';
-import ButtonGroup from 'react-bootstrap/ButtonGroup';
+import { ChakraProvider } from '@chakra-ui/react';
+import { ChevronDownIcon } from '@chakra-ui/icons';
 
-// import 'bootstrap/dist/css/bootstrap.min.css';
-// import '../App.css';
+import {
+  Box,
+  Button,
+  IconButton,
+  ButtonGroup,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+} from '@chakra-ui/react';
 
 function Navigation({ posts, setSearchResults }) {
   useEffect(() => {
@@ -70,40 +78,41 @@ function Navigation({ posts, setSearchResults }) {
 
           {/* Dropdown menu */}
           <li>
-            <Dropdown data-bs-theme="dark">
-              <Dropdown.Toggle
-                id="dropdown-basic"
-                style={{ padding: '5px', fontSize: '18px', width: '100px' }}
+            <Menu>
+              <MenuButton
+                className="menuButton"
+                as={Button}
+                rightIcon={<ChevronDownIcon />}
+                style={{ fontSize: '15   px', width: '80px' }}
               >
-                More <FontAwesomeIcon icon={faCaretDown} />
-              </Dropdown.Toggle>
-
-              <Dropdown.Menu>
-                <Dropdown.Item>
+                More
+              </MenuButton>
+              <MenuList>
+                <MenuItem minH="20px">
                   <NavLink to="/dramamovies" className="fs-4">
                     Drama
                   </NavLink>
-                </Dropdown.Item>
+                </MenuItem>
 
-                <Dropdown.Item>
+                <MenuItem minH="20px">
                   <NavLink to="/familymovies" className="fs-4">
                     Family
                   </NavLink>
-                </Dropdown.Item>
+                </MenuItem>
 
-                <Dropdown.Item>
+                <MenuItem minH="20px">
                   <NavLink to="/horrormovies" className="fs-4">
                     Horror
                   </NavLink>
-                </Dropdown.Item>
+                </MenuItem>
 
-                <Dropdown.Item>
+                <MenuItem minH="20px">
                   <NavLink to="/romancemovies" className="fs-4">
                     Romance
                   </NavLink>
-                </Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
+                </MenuItem>
+              </MenuList>
+            </Menu>
           </li>
 
           <li>
@@ -112,49 +121,54 @@ function Navigation({ posts, setSearchResults }) {
 
           {/* Login with dropdown split dropdown */}
           <li>
-            <div className="login">
-              <Dropdown as={ButtonGroup}>
-                <Button
-                  variant="success"
-                  style={{ padding: '5px', fontSize: '18px', width: '100px' }}
-                >
-                  <div style={{ display: 'flex', alignItems: 'center' }}>
-                    <NavLink to="/login" className="fs-4">
-                      Login
-                    </NavLink>
+            <div className="menuLogin">
+              <Box
+                className="myBox"
+                display="flex"
+                alignItems="center"
+                color="#071f3b"
+                backgroundColor="white"
+              >
+                <NavLink to="/login">
+                  <Button
+                    style={{
+                      padding: '3px',
+                      fontSize: '15px',
+                      width: '90px',
+                      alignItems: 'center',
+                    }}
+                  >
+                    <span style={{ marginRight: '10px' }}>Login</span>{' '}
                     <FontAwesomeIcon icon={faUserTie} />
-                  </div>
-                </Button>
+                  </Button>
+                </NavLink>
+                <Menu>
+                  <MenuButton
+                    as={IconButton}
+                    icon={<ChevronDownIcon />}
+                    style={{ height: '27px', width: '20px' }}
+                  />
+                  <MenuList>
+                    <MenuItem minH="20px">
+                      <NavLink to="/login" className="fs-4">
+                        Profile
+                      </NavLink>
+                    </MenuItem>
 
-                <Dropdown.Toggle
-                  split
-                  variant="success"
-                  id="dropdown-split-basic"
-                  style={{ padding: '5px', fontSize: '18px', width: '30px' }}
-                >
-                  <FontAwesomeIcon icon={faCaretDown} />
-                </Dropdown.Toggle>
+                    <MenuItem minH="30px">
+                      <NavLink to="/Favorites" className="fs-4">
+                        Favorites
+                      </NavLink>
+                    </MenuItem>
 
-                <Dropdown.Menu>
-                  <Dropdown.Item>
-                    <NavLink to="/login" className="fs-4">
-                      Profile
-                    </NavLink>
-                  </Dropdown.Item>
-
-                  <Dropdown.Item>
-                    <NavLink to="/Favorites" className="fs-4">
-                      Favorites
-                    </NavLink>
-                  </Dropdown.Item>
-
-                  <Dropdown.Item>
-                    <NavLink to="/Watchlist" className="fs-4">
-                      Watchlist
-                    </NavLink>
-                  </Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
+                    <MenuItem minH="30px">
+                      <NavLink to="/Watchlist" className="fs-4">
+                        Watchlist
+                      </NavLink>
+                    </MenuItem>
+                  </MenuList>
+                </Menu>
+              </Box>
             </div>
           </li>
         </ul>
