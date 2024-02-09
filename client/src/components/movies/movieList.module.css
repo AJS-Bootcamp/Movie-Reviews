@@ -1,4 +1,4 @@
-.trendingList {
+.movieList {
   color: white;
   display: flex;
   flex-direction: row;
@@ -9,7 +9,7 @@
   max-width: 100vw;
 }
 
-.trendingList > h2 {
+.movieList > h2 {
   position: sticky;
   left: 0px;
   z-index: 1;

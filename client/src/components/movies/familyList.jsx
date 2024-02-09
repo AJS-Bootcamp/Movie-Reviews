@@ -2,23 +2,23 @@ import React, { useEffect, useState } from 'react';
 import Movie from './Movie';
 import styles from './movieList.module.css';
 
-const TrendingList = () => {
-  const [trendingMovies, setTrendingMovies] = useState([]);
+const FamilyList = () => {
+  const [familyMovies, setFamilyMovies] = useState([]);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    const getTrendingMovies = async () => {
+    const getFamilyMovies = async () => {
       const taskFromServer = await fetchData();
-      setTrendingMovies(taskFromServer);
+      setFamilyMovies(taskFromServer);
     };
 
-    getTrendingMovies();
+    getFamilyMovies();
   }, []);
 
   async function fetchData() {
     try {
       setLoading(true); // Set loading state to true
-      const response = await fetch('/api/movies/trending');
+      const response = await fetch('/api/movies/family');
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
@@ -34,16 +34,16 @@ const TrendingList = () => {
 
   return (
     <div className={styles.movieList}>
-      <h2>Trending Movies</h2>
+      <h2>Family Movies</h2>
       {loading ? (
         <p>Loading...</p>
       ) : (
-        trendingMovies.map((trendingMovie) => (
-          <Movie key={trendingMovie.id} movie={trendingMovie} />
+        familyMovies.map((familyMovie) => (
+          <Movie key={familyMovie.id} movie={familyMovie} />
         ))
       )}
     </div>
   );
 };
 
-export default TrendingList;
+export default FamilyList;
