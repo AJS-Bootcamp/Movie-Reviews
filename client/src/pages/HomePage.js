@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-
 import logo from '../app/assets/img/MoviesAJS.png';
-
 import '../App.css';
 import NavigationGenre from '../components/NavigationGenre';
 import TrendingList from '../components/movies/trendingList';
+import MovieSlider from '../components/MovieSlider';
 
 function Homepage() {
   const [movies, setMovies] = React.useState([]);
@@ -36,9 +35,7 @@ function Homepage() {
           alt="logo"
           style={{ filter: 'grayscale(1) invert(1)' }}
         />
-        <h1>Carrousel</h1>
-        {/* <h2>Find Your Movies Here</h2>
-        <button onClick={() => fetchData()}>Find Your Movies</button> */}
+        <MovieSlider />
       </div>
       <div style={{ display: 'flex', justifyContent: 'center' }}>
         <NavigationGenre />
