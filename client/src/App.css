@@ -17,7 +17,7 @@ html {
 
 /*Header*/
 /*navigation*/
-/*login btn*/
+/*login btn and more */
 .menuButton {
   background-color: #071f3b;
   color: white;
@@ -28,15 +28,11 @@ Button {
   background-color: #071f3b;
   color: white;
   border: none;
+  border: 0px;
 }
 
 .btn {
   background-image: linear-gradient(to top, #48caeb 0%, #05f3eb 100%);
-}
-
-.menuLogin {
-  background-image: linear-gradient(to top, #48caeb 0%, #05f3eb 100%);
-  border: none;
 }
 
 div.login {
@@ -65,7 +61,7 @@ div.container-fluid a {
   left: 0;
   padding: 0 4%; /*left and right*/
   background-color: #071f3b;
-  color: white;
+
   z-index: 9;
   display: flex;
   align-items: center;

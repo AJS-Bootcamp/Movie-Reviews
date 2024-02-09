@@ -122,13 +122,7 @@ function Navigation({ posts, setSearchResults }) {
           {/* Login with dropdown split dropdown */}
           <li>
             <div className="menuLogin">
-              <Box
-                className="myBox"
-                display="flex"
-                alignItems="center"
-                color="#071f3b"
-                backgroundColor="white"
-              >
+              <Box className="myBox" display="flex" alignItems="center">
                 <NavLink to="/login">
                   <Button
                     style={{
