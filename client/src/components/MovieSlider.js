@@ -14,7 +14,7 @@ const MovieSlider = () => {
             try {
                 const response = await axios.get('https://api.themoviedb.org/3/movie/upcoming', {
                     params: {
-                        api_key: process.env.REACT_APP_TMDB_API_KEY,
+                        api_key: process.env.c7ca505670cee9f71026a8900d9e5f33,
                         language: 'en-US',
                         page: 1,
                         region: 'US', // Adjust region as needed
