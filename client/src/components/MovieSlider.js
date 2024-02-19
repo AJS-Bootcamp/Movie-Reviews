@@ -1,76 +1,59 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
-import Movie from '../components/movies/Movie'; // Import the Movie component
-// import styles from './styles.module.css'; // Import styles
+import { Carousel, CarouselItem, CarouselControl, CarouselIndicators, CarouselCaption } from 'reactstrap';
 
-const MovieSlider = () => {
-    const [movies, setMovies] = useState([]);
+const MovieCarousel = () => {
+  const [movies, setMovies] = useState([]);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [animating, setAnimating] = useState(false);
 
-    useEffect(() => {
-        const fetchUpcomingMovies = async () => {
-            try {
-                const response = await axios.get('https://api.themoviedb.org/3/movie/upcoming', {
-                    params: {
-                        api_key: process.env.c7ca505670cee9f71026a8900d9e5f33,
-                        language: 'en-US',
-                        page: 1,
-                        region: 'US', // Adjust region as needed
-                    },
-                });
-                setMovies(response.data.results.slice(0, 5)); // Slice the top 5 upcoming movies
-            } catch (error) {
-                console.error('Error fetching upcoming movies:', error);
-            }
-        };
+  useEffect(() => {
+    // Fetch movie data from API
+    fetch('/api/movies/')
+      .then(response => response.json())
+      .then(data => setMovies(data.results.slice(0, 3))) // Limiting to first 3 movies
+      .catch(error => console.error('Error fetching movies:', error));
+  }, []);
 
-        fetchUpcomingMovies();
-    }, []);
+  const next = () => {
+    if (animating) return;
+    const nextIndex = activeIndex === movies.length - 1 ? 0 : activeIndex + 1;
+    setActiveIndex(nextIndex);
+  }
 
-    const settings = {
-        dots: true,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 5,
-        slidesToScroll: 1,
-        autoplay: true,
-        autoplaySpeed: 3000,
-        responsive: [
-            {
-                breakpoint: 1024,
-                settings: {
-                    slidesToShow: 4,
-                },
-            },
-            {
-                breakpoint: 768,
-                settings: {
-                    slidesToShow: 3,
-                },
-            },
-            {
-                breakpoint: 480,
-                settings: {
-                    slidesToShow: 2,
-                },
-            },
-        ],
-    };
+  const previous = () => {
+    if (animating) return;
+    const nextIndex = activeIndex === 0 ? movies.length - 1 : activeIndex - 1;
+    setActiveIndex(nextIndex);
+  }
 
-    return (
-        <div>
-            <h2>Top 5 Upcoming Movies of the Week</h2>
-            <Slider {...settings}>
-                {movies.map(movie => (
-                    <div key={movie.id}>
-                        <Movie movie={movie} /> 
-                    </div>
-                ))}
-            </Slider>
-        </div>
-    );
+  const goToIndex = (newIndex) => {
+    if (animating) return;
+    setActiveIndex(newIndex);
+  }
+
+  const slides = movies.map(movie => (
+    <CarouselItem
+      onExiting={() => setAnimating(true)}
+      onExited={() => setAnimating(false)}
+      key={movie.id}
+    >
+      <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.title} />
+      <CarouselCaption captionText={movie.overview} captionHeader={movie.title} />
+    </CarouselItem>
+  ));
+
+  return (
+    <Carousel
+      activeIndex={activeIndex}
+      next={next}
+      previous={previous}
+    >
+      <CarouselIndicators items={movies} activeIndex={activeIndex} onClickHandler={goToIndex} />
+      {slides}
+      <CarouselControl direction="prev" directionText="Previous" onClickHandler={previous} />
+      <CarouselControl direction="next" directionText="Next" onClickHandler={next} />
+    </Carousel>
+  );
 };
 
-export default MovieSlider;
+export default MovieCarousel;
