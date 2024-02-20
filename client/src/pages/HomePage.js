@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import logo from '../app/assets/img/MoviesAJS.png';
 import '../App.css';
 import NavigationGenre from '../components/NavigationGenre';
 import TrendingList from '../components/movies/trendingList';
-import MovieSlider from '../components/MovieSlider';
+import MovieCarousel from '../components/MovieCarousel';
 
 function Homepage() {
   const [movies, setMovies] = React.useState([]);
@@ -26,6 +26,10 @@ function Homepage() {
     }
   }
 
+  useEffect(( ) => {
+    fetchData();
+  }, []);
+
   return (
     <div className="App">
       <div className="App-background-Logo">
@@ -35,7 +39,7 @@ function Homepage() {
           alt="logo"
           style={{ filter: 'grayscale(1) invert(1)' }}
         />
-        <MovieSlider />
+        <MovieCarousel movies={movies} />
       </div>
       <div style={{ display: 'flex', justifyContent: 'center' }}>
         <NavigationGenre />

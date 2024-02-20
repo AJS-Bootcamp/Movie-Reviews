@@ -7,8 +7,6 @@ const TrendingList = () => {
   const [trendingMovies, setTrendingMovies] = useState([]);
   const [loading, setLoading] = useState(false);
 
-
-
   useEffect(() => {
     const getTrendingMovies = async () => {
       const taskFromServer = await fetchData();
