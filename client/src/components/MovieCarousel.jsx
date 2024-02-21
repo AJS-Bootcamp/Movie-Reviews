@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Carousel, CarouselItem, CarouselControl, CarouselIndicators, } from 'reactstrap';
-// import './MovieCarousel.css'; 
 
 const MovieCarousel = () => {
   const [movies, setMovies] = useState([]);
