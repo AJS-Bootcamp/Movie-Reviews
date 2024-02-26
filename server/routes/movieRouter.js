@@ -25,6 +25,21 @@ router.get('/', async (req, res) => {
 });
 //End of all movies
 
+//Search
+const searchUrl = `https://api.themoviedb.org/3/search/movie?api_key=${APIKEY}`;
+router.get('/search', async (req, res, next) => {
+  try {
+    const response = await fetch(searchUrl + `&query=${req.query.movie}`);
+    const data = await response.json();
+    res.json(data.results);
+  } catch (error) {
+    console.error('Error searching movies:', error);
+    res
+      .status(500)
+      .json({ error: 'An error occurred while fetching searching movies' });
+  }
+});
+
 //Api movies Trending
 const TRENDING_API_URL = `https://api.themoviedb.org/3/trending/movie/week?api_key=${APIKEY}`;
 
